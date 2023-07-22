@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rm -rf functions/get_note/dist",
-    "build": "esbuild functions/get_note/index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=functions/get_note/dist/index.js",
-    "postbuild": "cd functions/get_note/dist && zip -r index.zip index.js*"
+    "xprebuild": "rm -rf functions/$FN_DIR/dist",
+    "build": "esbuild functions/$FN_DIR/index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=functions/$FN_DIR/dist/index.js",
+    "xpostbuild": "cd functions/$FN_DIR/dist && zip -r index.zip index.js*"
   },
   "repository": {
     "type": "git",
