@@ -22,7 +22,8 @@ jobs:
     steps:
       - id: matrix
         run: |
-          python getdirs.py >> $GITHUB_OUTPUT
+          ls
+          #python getdirs.py >> $GITHUB_OUTPUT
   build:
     needs: [ setup ]
     runs-on: ubuntu-latest
