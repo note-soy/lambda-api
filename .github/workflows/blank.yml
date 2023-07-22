@@ -33,5 +33,7 @@ jobs:
        matrix:
          value: ${{fromJson(needs.setup.outputs.matrix)}}
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v2.3.4
       - name: Build ${{ matrix.value }}
         run: ls
