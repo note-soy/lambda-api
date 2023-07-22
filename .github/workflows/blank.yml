@@ -22,7 +22,7 @@ jobs:
     steps:
       - id: matrix
         run: |
-          echo 'value=["a"]' >> $GITHUB_OUTPUT
+          echo 'value=["a", "b"]' >> $GITHUB_OUTPUT
   build:
     needs: [ setup ]
     runs-on: ubuntu-latest
