@@ -1,0 +1,25 @@
+{
+  "name": "lambda-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf functions/get_note/dist",
+    "build": "esbuild functions/get_note/index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=functions/get_note/dist/index.js",
+    "postbuild": "cd functions/get_note/dist && zip -r index.zip index.js*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/note-soy/lambda-api.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/note-soy/lambda-api/issues"
+  },
+  "homepage": "https://github.com/note-soy/lambda-api#readme",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "esbuild": "^0.18.15"
+  }
+}
