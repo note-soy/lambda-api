@@ -25,15 +25,13 @@ jobs:
       - id: matrix
         run: |
           python getdirs.py >> $GITHUB_OUTPUT
-          
+
   build:
     needs: [ setup ]
     runs-on: ubuntu-latest
     strategy:
        matrix:
          value: ${{fromJson(needs.setup.outputs.matrix)}}
-         #value: ${{fromJson('["a", "b"]')}}
     steps:
-      - run: |
-         echo "${{ matrix.value }}"
-#          echo "matrix -- ${{ needs.setup.outputs.matrix }}"
+      - name: Build ${{ matrix.value }}
+        run: ls
