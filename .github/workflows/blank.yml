@@ -20,10 +20,12 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v2.3.4
       - id: matrix
         run: |
-          ls
-          #python getdirs.py >> $GITHUB_OUTPUT
+          python getdirs.py >> $GITHUB_OUTPUT
+          
   build:
     needs: [ setup ]
     runs-on: ubuntu-latest
