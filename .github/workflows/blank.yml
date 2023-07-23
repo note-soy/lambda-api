@@ -42,5 +42,5 @@ jobs:
         run: npm install
       - name: Build ${{ matrix.value }}
         run: FN_DIR=${{ matrix.value }} npm run build
-      - name: Show ${{ matrix.value }}
-        run: ls functions/get_note/dist
+      - name: Update ${{ matrix.value}} lambda function
+        run: aws lambda update-function-code --function-name ${{ matrix.value }} --zip-file functions/${{ matrix.value }}/dist/index.zip
