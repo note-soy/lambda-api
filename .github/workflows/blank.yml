@@ -43,4 +43,4 @@ jobs:
       - name: Build ${{ matrix.value }}
         run: FN_DIR=${{ matrix.value }} npm run build
       - name: Update ${{ matrix.value}} lambda function
-        run: aws lambda update-function-code --function-name ${{ matrix.value }} --zip-file functions/${{ matrix.value }}/dist/index.zip
+        run: aws lambda update-function-code --function-name ${{ matrix.value }} --zip-file fileb://functions/${{ matrix.value }}/dist/index.zip
