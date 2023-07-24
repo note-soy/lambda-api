@@ -33,6 +33,11 @@ jobs:
        matrix:
          value: ${{fromJson(needs.setup.outputs.matrix)}}
     steps:
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::903413632582:role/github_oidc_lambda
+          aws-region: us-east-1
       - name: checkout repo
         uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
