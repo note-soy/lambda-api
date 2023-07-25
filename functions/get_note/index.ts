@@ -1,19 +1,14 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
-import {get_note} from "../../common/s3";
+import {getNote} from "../../common/s3";
 
 export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   console.log(`Event: ${JSON.stringify(event, null, 2)}`);
+  const result = await getNote("doesnotexist");
   return {
       statusCode: 200,
-      body: await get_note("doesnotexist") ?? "nothing",
-      // body: event.pathParameters?.id ?? "no id",
+      body: JSON.stringify(result),
   };
 };
-
-interface Note {
-    title: string;
-    content: string;
-}
 
 
 
