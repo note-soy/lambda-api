@@ -3,11 +3,19 @@ import {getNote} from "../../common/s3";
 
 export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   console.log(`Event: ${JSON.stringify(event, null, 2)}`);
-  const result = await getNote("doesnotexist");
-  return {
-      statusCode: 200,
-      body: JSON.stringify(result),
-  };
+  const id = event?.pathParameters?.id;
+  if (id) {
+      const result = await getNote(id);
+      return {
+          statusCode: 200,
+          body: JSON.stringify(result),
+      };
+  } else {
+      return {
+          statusCode: 400,
+          body: "Bad Request",
+      }
+  }
 };
 
 
