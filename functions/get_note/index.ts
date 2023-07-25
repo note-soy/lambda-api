@@ -9,6 +9,9 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
       return {
           statusCode: 200,
           body: JSON.stringify(result),
+          headers: {
+              'Content-Type': 'application/json'
+          }
       };
   } else {
       return {
