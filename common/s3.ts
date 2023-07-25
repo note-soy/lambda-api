@@ -12,6 +12,6 @@ export const get_note = async (key: string) => {
         Key: key,
     }));
 
-    return await results.Body.transformToString();
+    return await results?.Body?.transformToString();
 
 }
