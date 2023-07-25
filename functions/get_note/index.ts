@@ -7,6 +7,7 @@ export const handler = async (event: APIGatewayEvent, context: Context): Promise
 
   return {
       statusCode: 200,
-      body: await get_note("test.txt"),
+      // body: await get_note("test.txt"),
+      body: event.pathParameters?.id ?? "no id",
    };
 };
