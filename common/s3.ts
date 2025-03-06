@@ -2,6 +2,7 @@ import {
     GetObjectCommand,
     GetObjectCommandInput,
     GetObjectCommandOutput,
+    PutObjectCommand,
     S3Client,
     S3ServiceException
 } from "@aws-sdk/client-s3";
@@ -38,4 +39,18 @@ export async function getNoteContent(key: string): Promise<Note> {
         throw err;
     }
 
+}
+
+export async function saveNoteContent(key: string, content: string): Promise<void> {
+    try {
+        await s3Client.send(new PutObjectCommand({
+            Bucket: BUCKET,
+            Key: key,
+            Body: content,
+            ContentType: 'text/plain'
+        }));
+    } catch (err) {
+        console.error(`Error saving note ${key}:`, err);
+        throw err;
+    }
 }
